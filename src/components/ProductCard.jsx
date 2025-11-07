@@ -1,6 +1,9 @@
+import { Children } from "react";
+
 export default function ProductCard({ producto }) {
   return (
-    <div
+    <article
+      tabIndex={0}
       className="rounded-2xl shadow-custom p-4 flex flex-col items-center hover:scale-105 transition-transform duration-200 ease-in-out"
       style={{
         backgroundColor: "var(--color-white)",
@@ -8,7 +11,7 @@ export default function ProductCard({ producto }) {
       }}
     >
       {/* Imagen */}
-      <div
+      <figure
         className="w-full h-48 overflow-hidden rounded-xl mb-3 flex items-center justify-center"
         style={{ backgroundColor: "var(--color-white-2)" }}
       >
@@ -18,15 +21,24 @@ export default function ProductCard({ producto }) {
           className="object-contain max-h-full max-w-full"
           loading="lazy"
         />
-      </div>
+        <figcaption className="sr-only">{producto.Children}</figcaption>
+      </figure>
 
       {/* Nombre */}
       <h2
         className="text-lg font-semibold mb-1 text-center"
         style={{ color: "var(--color-grey-2)" }}
       >
-        {producto.nombre}
+        <strong>{producto.nombre}</strong>
       </h2>
+
+      {/* Descripción */}
+      <h3
+        className="text-sm mb-4 text-center"
+        style={{ color: "var(--color-grey-3)" }}
+      >
+        {producto.descripcion}
+      </h3>
 
       {/* Precio */}
       <p
@@ -35,6 +47,6 @@ export default function ProductCard({ producto }) {
       >
         {producto.precio}
       </p>
-    </div>
+    </article>
   );
 }

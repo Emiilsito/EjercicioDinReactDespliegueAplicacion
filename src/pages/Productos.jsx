@@ -2,9 +2,9 @@ import ProductList from "../components/ProductList";
 
 function Productos() {
   return (
-    <div
+    <article
       className="min-h-screen flex flex-col items-center px-6 py-12"
-      style={{ backgroundColor: "var(--color-white)", color: "var(--color-black-1)" }}
+      style={{ backgroundColor: "var(--color-grey-4)", color: "var(--color-black-1)" }}
     >
       {/* Título principal */}
       <h1
@@ -39,12 +39,12 @@ function Productos() {
           color: "var(--color-grey-2)" 
         }}
         >
-        <strong>frecer calidad al mejor precio para nuestros clientes.</strong>
+        <strong>Ofrecer calidad al mejor precio para nuestros clientes.</strong>
       </p>
 
       {/* Lista de productos */}
-      <ProductList />
-    </div>
+        <ProductList />
+    </article>
   );
 }
 

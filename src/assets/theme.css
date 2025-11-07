@@ -97,3 +97,8 @@
 .shadow-custom {
   box-shadow: var(--dropshadow);
 }
+
+/* Fondo global de la página usando la variable del tema */
+body {
+  background-color: var(--color-grey-5);
+}
