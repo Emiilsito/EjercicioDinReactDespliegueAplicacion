@@ -1,3 +1,15 @@
+/**
+ * productos
+ * Array con los productos del catálogo.
+ * Cada producto tiene:
+ *  - id: número único
+ *  - nombre: texto
+ *  - precio: texto formateado
+ *  - descripcion: texto corto para mostrar en la tarjeta
+ *  - img: URL de la imagen
+ *
+ * Uso: import { productos } from '../data/productos'
+ */
 export const productos = [
   {
     id: 1,

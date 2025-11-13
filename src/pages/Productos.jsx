@@ -1,5 +1,10 @@
 import ProductList from "../components/ProductList";
 
+/**
+ * Página Productos
+ * - Muestra el título, subtítulos y la lista de productos.
+ * - Usa las variables de tema para colores y tamaños.
+ */
 function Productos() {
   return (
     <article

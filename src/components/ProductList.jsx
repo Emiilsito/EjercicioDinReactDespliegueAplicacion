@@ -1,6 +1,13 @@
 import ProductCard from "./ProductCard";
 import { productos } from "../data/productos";
 
+/**
+ * ProductList
+ * Muestra todos los productos en una cuadrícula.
+ * - Toma los datos de `src/data/productos.js`.
+ * - Cada producto se renderiza con `ProductCard`.
+ * - El contenedor usa `role="main"` e `id="main-content"` para accesibilidad.
+ */
 function ProductList() {
   return (
     <main id="main-content" role="main" tabIndex={-1} className="mx-auto w-full max-w-7xl px-4">

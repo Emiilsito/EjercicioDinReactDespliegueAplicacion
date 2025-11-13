@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './styles/index.css'
 import App from './App.jsx'
 
+// Punto de entrada: monta la aplicación React en el DOM.
+// El enlace 'Saltar al contenido' mejora la accesibilidad para teclado/lectores.
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <a href="#main-content" className='sr-only focus:not-sr-only focus:absolute
