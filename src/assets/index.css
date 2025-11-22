@@ -5,5 +5,38 @@
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--color-white);
+  /* Usamos el fondo gris claro definido en el theme para que las secciones blancas destaquen */
+  background-color: var(--color-grey-5);
+  color: var(--color-black-2);
+}
+
+/* Make header and footer span full width and reserve space for them */
+.site-header {
+  width: 100%;
+}
+
+.site-footer {
+  width: 100%;
+}
+
+/* Skip-link: hidden but visible when focused (keyboard users) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  background: var(--color-white);
+  color: var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 9999;
 }

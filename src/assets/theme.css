@@ -91,6 +91,9 @@
   --text-small-font-weight: 400;
   --text-small-letter-spacing: 0px;
   --text-small-line-height: 19.6px;
+  /* Header/footer dimensions for layout spacing */
+  --header-height: 55px;
+  --footer-height: 260px;
 }
 
 /* Custom utilities used in components */
@@ -101,4 +104,37 @@
 /* Fondo global de la página usando la variable del tema */
 body {
   background-color: var(--color-grey-5);
+}
+
+/* Utility classes that map design tokens to CSS classes so components can rely on the theme */
+.site-header {
+  min-height: var(--header-height);
+}
+.site-header h1 {
+  font-size: var(--heading-h5-font-size);
+  font-weight: var(--heading-h5-font-weight);
+  line-height: var(--heading-h5-line-height);
+}
+.nav-link {
+  font-size: var(--text-medium-font-size);
+  line-height: var(--text-medium-line-height);
+}
+.nav-link-large {
+  font-size: var(--text-large-font-size);
+  line-height: var(--text-large-line-height);
+}
+.text-h1 { font-size: var(--heading-h1-font-size); line-height: var(--heading-h1-line-height); font-weight: var(--heading-h1-font-weight); }
+.text-h2 { font-size: var(--heading-h2-font-size); line-height: var(--heading-h2-line-height); font-weight: var(--heading-h2-font-weight); }
+.text-h3 { font-size: var(--heading-h3-font-size); line-height: var(--heading-h3-line-height); font-weight: var(--heading-h3-font-weight); }
+.text-h4 { font-size: var(--heading-h4-font-size); line-height: var(--heading-h4-line-height); font-weight: var(--heading-h4-font-weight); }
+.text-h5 { font-size: var(--heading-h5-font-size); line-height: var(--heading-h5-line-height); font-weight: var(--heading-h5-font-weight); }
+.text-normal { font-size: var(--text-normal-font-size); line-height: var(--text-normal-line-height); }
+.text-large { font-size: var(--text-large-font-size); line-height: var(--text-large-line-height); }
+.text-medium { font-size: var(--text-medium-font-size); line-height: var(--text-medium-line-height); }
+.footer-text { font-size: var(--text-large-font-size); line-height: var(--text-large-line-height); }
+
+@media (min-width: 768px) {
+  .footer-text { font-size: var(--text-medium-bold-font-size); }
+  .nav-link { font-size: var(--text-medium-font-size); }
+  .nav-link-large { font-size: var(--text-large-font-size); }
 }

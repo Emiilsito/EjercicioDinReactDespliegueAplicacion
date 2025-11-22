@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <!-- Use the mando icon as favicon (cache-busted) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/Images/mando.png?v=2" />
+  <!-- SVG fallback kept for environments that prefer it -->
+  <link rel="alternate icon" type="image/svg+xml" href="/vite.svg" />
+  <!-- Older browsers sometimes cache favicons aggressively; the query string helps force reloads during development -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gamezone</title>
   </head>
