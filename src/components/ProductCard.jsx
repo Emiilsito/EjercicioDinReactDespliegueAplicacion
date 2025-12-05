@@ -19,20 +19,20 @@ export default function ProductCard({ producto, onSelect }) {
       onClick={() => onSelect?.(producto)}
       aria-label={`Ver detalles de ${producto.nombre}`}
       role="listitem"
-      className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-      style={{ textDecoration: 'none' }}
+      className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 no-underline"
     >
       <article
-        className="rounded-2xl shadow-custom p-6 flex flex-col items-center hover:scale-105 transition-transform duration-200 ease-in-out"
+        className="rounded-2xl p-6 flex flex-col items-center hover:scale-105 transition-transform duration-200 ease-in-out"
         style={{
-          backgroundColor: "var(--color-white)",
-          border: `1px solid var(--color-grey-5)`
+          backgroundColor: 'var(--color-white-2)',
+          border: '1px solid var(--color-grey-5)',
+          boxShadow: 'var(--dropshadow)'
         }}
       >
   {/* Imagen: contenedor que recorta la imagen y la centra */}
       <figure
         className="w-full h-48 overflow-hidden rounded-xl mb-3 flex items-center justify-center"
-        style={{ backgroundColor: "var(--color-white-2)" }}
+        style={{ backgroundColor: 'var(--color-white-2)' }}
       >
         <img
           src={producto.img}
@@ -40,31 +40,25 @@ export default function ProductCard({ producto, onSelect }) {
           className="object-contain max-h-full max-w-full"
           loading="lazy"
         />
-        <figcaption className="sr-only">{producto.Children}</figcaption>
+  <figcaption className="sr-only">{producto.Children}</figcaption>
       </figure>
 
   {/* Nombre: título del producto */}
       <h2
         id={`product-card-title-${producto.id}`}
         className="text-lg font-semibold mb-2 text-center"
-        style={{ color: "var(--color-grey-2)" }}
+        style={{ color: 'var(--color-grey-2)' }}
       >
         <strong>{producto.nombre}</strong>
       </h2>
 
   {/* Descripción breve del producto */}
-      <h3
-        className="text-sm mb-6 text-center"
-        style={{ color: "var(--color-grey-3)" }}
-      >
+      <h3 className="text-sm mb-6 text-center" style={{ color: 'var(--color-grey-3)' }}>
         {producto.descripcion}
       </h3>
 
   {/* Precio: destacado para llamar la atención */}
-      <p
-        className="text-base font-bold"
-        style={{ color: "var(--color-primary)" }}
-      >
+      <p className="text-base font-bold" style={{ color: 'var(--color-primary)' }}>
         {producto.precio}
       </p>
       </article>

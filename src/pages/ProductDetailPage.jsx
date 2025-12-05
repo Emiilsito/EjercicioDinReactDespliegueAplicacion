@@ -17,7 +17,7 @@ export default function ProductDetailPage() {
 
   if (!producto) {
     return (
-      <Layout>
+      <Layout bgPage={'var(--color-white)'}>
         <div className="min-h-screen px-6 py-20 text-center">
           <h2 style={{ color: 'var(--color-primary)' }}>Producto no encontrado</h2>
         </div>
@@ -26,8 +26,8 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <Layout>
-      <main className="min-h-screen">
+    <Layout bgPage={'var(--color-white)'}>
+      <div className="min-h-screen">
         {/* Outer wrapper: page background should be grey; card remains white */}
         <section aria-labelledby={`product-title-${producto.id}`} style={{ backgroundColor: 'var(--color-grey-5)', paddingTop: '2rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '24px 1fr 24px', height: 'calc(100vh - var(--header-height) - var(--footer-height) - 2rem)', alignItems: 'center' }}>
@@ -92,7 +92,7 @@ export default function ProductDetailPage() {
             <aside aria-hidden="true" style={{ backgroundColor: 'var(--color-grey-5)' }} />
           </div>
         </section>
-      </main>
+  </div>
     </Layout>
   );
 }

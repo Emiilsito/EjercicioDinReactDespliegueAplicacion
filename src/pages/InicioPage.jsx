@@ -12,11 +12,8 @@ import Layout from "../components/Layout";
  */
 export default function InicioPage() {
   return (
-    <Layout>
-      <div
-        className="px-6 py-16 text-center"
-        style={{ backgroundColor: "var(--color-grey-5)" }}
-      >
+    <Layout pageBg={'var(--color-white)'}>
+      <div className="px-6 py-16 text-center">
         <h1
           style={{
             fontSize: "var(--heading-h1-font-size)",

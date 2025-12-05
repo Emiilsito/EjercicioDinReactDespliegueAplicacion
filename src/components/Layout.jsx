@@ -11,11 +11,11 @@ import Footer from "./Footer";
  * Accesibilidad:
  *  - Proporciona un enlace "Saltar al contenido" y asigna `id="page-main"` al main para facilitar la navegación por teclado.
  */
-export default function Layout({ children }) {
+export default function Layout({ children, pageBg }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main id="page-main" className="grow">{children}</main>
+      <main id="page-main" className="grow" style={pageBg ? { backgroundColor: pageBg } : undefined}>{children}</main>
       <Footer />
     </div>
   );

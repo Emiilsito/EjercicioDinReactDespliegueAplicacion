@@ -15,10 +15,10 @@ export default function ErrorPage() {
   const location = useLocation();
 
   return (
-    <Layout>
-      <section className="px-6 py-20 flex justify-center" style={{ backgroundColor: 'var(--color-grey-5)' }}>
+    <Layout pageBg={'var(--color-white)'}>
+      <section className="px-6 py-20 flex justify-center">
         <div className="w-full max-w-3xl mx-auto text-center">
-          <h1 className="mx-auto" style={{ fontSize: 'var(--heading-h2-font-size)', fontWeight: 700, color: 'var(--color-primary)' }}>
+          <h1 className="mx-auto" style={{ fontSize: 'var(--heading-h2-font-size)', fontWeight: 'var(--heading-h2-font-weight)', color: 'var(--color-primary)' }}>
             404 — Página no encontrada
           </h1>
 
@@ -33,7 +33,7 @@ export default function ErrorPage() {
               Ir al inicio
             </Link>
 
-            <Link to="/productos" className="inline-block rounded-full font-semibold border border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2" style={{ background: 'white', color: 'var(--color-primary)', padding: '10px 18px' }}>
+            <Link to="/productos" className="inline-block rounded-full font-semibold border border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2" style={{ background: 'linear-gradient(180deg, rgba(6,110,204,1) 0%, rgba(3,60,114,1) 100%)', color: 'var(--color-white)', padding: '10px 18px' }}>
               Ver productos
             </Link>
           </div>
