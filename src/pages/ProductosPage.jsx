@@ -1,34 +1,29 @@
 import Layout from "../components/Layout";
 import ProductList from "../components/ProductList";
-import { productos } from "../data/productos";
-import { useState, useMemo } from "react";
 import SearchBar from "../components/SearchBar";
+import { useProducts } from "../hooks/useProducts"; // Hook de la Actividad 2
+import { useState, useMemo } from "react";
 
-/**
- * ProductosPage
- * Página que muestra la lista de productos filtrable.
- */
 export default function ProductosPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  
+  const { productos, loading, error } = useProducts();
 
   const filteredProductos = useMemo(() => {
+    if (!productos) return [];
     if (!searchTerm) return productos;
     
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
     return productos.filter((producto) =>
       producto.nombre.toLowerCase().includes(lowerCaseSearchTerm)
     );
-  }, [searchTerm]);
+  }, [searchTerm, productos]);
 
   return (
     <Layout>
-      {/* El contenedor <main> del Layout ya tiene la clase .main_content, 
-        por lo que aquí solo organizamos el contenido interior.
-      */}
       <div className="w-full max-w-6xl mx-auto">
         
         <header className="w-full mb-12">
-          {/* Usamos las clases de tipografía semántica del index.css */}
           <h1 id="productos-heading" className="heading_h1">
             Nuestros Productos
           </h1>
@@ -44,12 +39,11 @@ export default function ProductosPage() {
           </p>
         </header>
 
-        {/* ProductList ya tiene su propio grid interno y max-width, 
-          así que solo le pasamos los productos filtrados. 
-        */}
         <div className="w-full">
           <ProductList 
             items={filteredProductos} 
+            loading={loading}
+            error={error}
             onSelect={(p) => console.log('Producto seleccionado:', p.id)} 
           />
         </div>

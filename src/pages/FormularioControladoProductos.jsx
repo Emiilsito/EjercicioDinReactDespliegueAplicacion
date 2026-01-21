@@ -1,21 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
-
-/**
- * @component FormularioControladoProductos
- * @description Formulario de administración con estado controlado para la creación de nuevos productos.
- * Implementa validaciones en tiempo real y gestión de mensajes de éxito/error.
- * * @returns {JSX.Element} Un formulario maquetado con la clase .form_card.
- * * @function validateForm
- * @description Ejecuta las reglas de validación: campos obligatorios, longitud mínima de descripción (10 caracteres), 
- * precio positivo y formato de URL válido para la imagen.
- * * @accessibility
- * - Usa `aria-invalid` para marcar campos con errores.
- * - Emplea `aria-describedby` para vincular inputs con sus mensajes de error específicos.
- * - Los mensajes de éxito utilizan el `role="alert"` para notificar a lectores de pantalla.
- */
+import { productService } from "../services/productService";
 
 export default function FormularioControladoProductos() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: "",
     descripcion: "",
@@ -48,18 +37,30 @@ export default function FormularioControladoProductos() {
 
   const isValidUrl = (s) => { try { new URL(s); return true; } catch (_) { return false; } };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length > 0) return setErrors(newErrors);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const newErrors = validateForm();
+  if (Object.keys(newErrors).length > 0) return setErrors(newErrors);
 
-    setErrors({});
-    console.log("Producto agregado:", formData);
+  try {
+    await productService.create({
+      nombre: formData.nombre,
+      descripcion: formData.descripcion,
+      precio: formData.precio,
+      categoria: formData.categoria,
+      imagen: formData.img
+    });
+
     setSuccessMessage("¡Producto agregado correctamente!");
-    setFormData({ nombre: "", descripcion: "", precio: "", categoria: "", img: "" });
-    setTimeout(() => setSuccessMessage(""), 3000);
-  };
 
+    setTimeout(() => {
+      navigate("/productos"); 
+    }, 1500);
+
+  } catch (err) {
+    setErrors({ server: "Error al guardar en la base de datos." });
+  }
+};
   return (
     <Layout pageBg={'var(--color-white)'}>
       <div className="form_card">
@@ -68,6 +69,12 @@ export default function FormularioControladoProductos() {
         {successMessage && (
           <div className="success_message" role="alert">
             {successMessage}
+          </div>
+        )}
+        
+        {errors.server && (
+          <div className="error_message mb-4" role="alert" style={{ color: 'var(--color-error)' }}>
+            {errors.server}
           </div>
         )}
 

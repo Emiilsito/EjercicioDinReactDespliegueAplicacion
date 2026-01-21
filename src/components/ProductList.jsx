@@ -1,23 +1,21 @@
 import ProductCard from "./ProductCard";
-import { productos as defaultProductos } from "../data/productos";
 
 /**
  * ProductList
- * Lista reutilizable de productos mostrada en una cuadrícula.
+ * Ahora es un componente "tonto" que solo renderiza lo que recibe.
  */
-function ProductList({ items = defaultProductos, onSelect }) {
+function ProductList({ items, loading, error, onSelect }) {
+  
+  // Gestión de estados de la API (Requisito 1 de la actividad)
+  if (loading) return <p className="text-center p-10 text_normal">Cargando productos desde MongoDB...</p>;
+  if (error) return <p className="text-center p-10 text-error">Error: {error}</p>;
+
   return (
-    /* 1. Eliminamos id="main-content" y tabIndex={-1} porque ya están en el Layout.
-       2. Añadimos max-w-6xl para alinear la cuadrícula con el Header.
-    */
     <section 
       role="region" 
       className="w-full max-w-6xl mx-auto" 
       aria-labelledby="productos-heading"
     >
-      {/* Usamos el gap-8 y las columnas responsivas de Tailwind que 
-          respetan la estructura de tu index.css.
-      */}
       <div 
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-stretch" 
         role="list" 
@@ -27,6 +25,12 @@ function ProductList({ items = defaultProductos, onSelect }) {
           <ProductCard key={p.id} producto={p} onSelect={onSelect} />
         ))}
       </div>
+
+      {items.length === 0 && !loading && (
+        <p className="text-center p-10 text-[var(--color-grey-3)]">
+          No hay productos que coincidan con tu búsqueda.
+        </p>
+      )}
     </section>
   );
 }
