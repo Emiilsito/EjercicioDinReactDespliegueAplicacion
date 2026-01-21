@@ -5,8 +5,6 @@ import ProductCard from "./ProductCard";
  * Ahora es un componente "tonto" que solo renderiza lo que recibe.
  */
 function ProductList({ items, loading, error, onSelect }) {
-  
-  // Gestión de estados de la API (Requisito 1 de la actividad)
   if (loading) return <p className="text-center p-10 text_normal">Cargando productos desde MongoDB...</p>;
   if (error) return <p className="text-center p-10 text-error">Error: {error}</p>;
 

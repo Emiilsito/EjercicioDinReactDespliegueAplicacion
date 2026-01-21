@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import ProductList from "../components/ProductList";
 import SearchBar from "../components/SearchBar";
-import { useProducts } from "../hooks/useProducts"; // Hook de la Actividad 2
+import { useProducts } from "../hooks/useProducts";
 import { useState, useMemo } from "react";
 
 export default function ProductosPage() {
