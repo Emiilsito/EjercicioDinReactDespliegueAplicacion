@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/productos";
+const API_URL = `${import.meta.env.VITE_API_URL}`;
 
 export const mapProductoFromAPI = (producto) => ({
     id: producto._id,
@@ -62,6 +62,4 @@ export const productService = {
         const data = result.data || result;
         return mapProductoFromAPI(data);
     }
-
-
 };

@@ -7,13 +7,8 @@ import Layout from "../components/Layout";
  */
 export default function AdminPage() {
   return (
-    /* El prop pageBg aplicará la clase background_color_white definida en el CSS */
-    <Layout pageBg={'var(--color-white)'}>
+    <Layout pageBg={'var(--color-grey-1)'}>
       
-      {/* 1. Usamos 'form_card' para que la sección de herramientas tenga 
-           el mismo estilo visual que los formularios (fondo, sombra y bordes).
-        2. Al estar dentro de 'main_content', ya está centrado vertical y horizontalmente.
-      */}
       <section 
         className="form_card" 
         aria-labelledby="admin-heading"
@@ -26,7 +21,6 @@ export default function AdminPage() {
           <Link
             to="/formulario-productos"
             aria-label="Formulario para agregar productos"
-            /* Usamos la clase semántica para botones con degradado */
             className="cta_button"
           >
             Agregar producto

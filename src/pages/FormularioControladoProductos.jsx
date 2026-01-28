@@ -62,7 +62,7 @@ const handleSubmit = async (e) => {
   }
 };
   return (
-    <Layout pageBg={'var(--color-white)'}>
+    <Layout pageBg={'var(--color-grey-1)'}>
       <div className="form_card">
         <h2 className="heading_h2 mb-8 text-center">Agregar Nuevo Producto</h2>
 
