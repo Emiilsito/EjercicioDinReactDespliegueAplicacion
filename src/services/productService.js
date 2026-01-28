@@ -1,4 +1,4 @@
-const API_URL = `${import.meta.env.VITE_API_URL}`;
+const API_URL = `${import.meta.env.VITE_API_URL}`; //Comment
 
 export const mapProductoFromAPI = (producto) => ({
     id: producto._id,
