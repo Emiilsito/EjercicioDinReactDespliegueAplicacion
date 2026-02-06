@@ -1,27 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
-
-/**
- * @component Header
- * @description Barra de navegación principal de la aplicación. Gestiona el logo y los enlaces de navegación, 
- * resaltando visualmente la ruta activa.
- * * @param {Object} props - Propiedades del componente.
- * @param {Function} [props.onNavigate] - Callback opcional para manejar eventos de navegación personalizados.
- * * @returns {JSX.Element} Cabecera con fondo `var(--color-primary)` y diseño responsivo.
- * * @accessibility
- * - Incluye un "Skip Link" invisible para permitir a usuarios de teclado saltar al contenido principal.
- * - Define un `role="banner"` y etiquetas `aria-label` para identificar claramente las regiones de navegación.
- * - Utiliza `aria-current="page"` para marcar dinámicamente el enlace de la página activa.
- */
+import { useContext } from "react"; // 1. Importamos useContext
+import { UserContext } from "../context/UserContext"; // 2. Importamos tu contexto
 
 export default function Header({ onNavigate }) {
   const location = useLocation();
   const path = location.pathname;
 
+  const { userLogged, logout } = useContext(UserContext);
+
   return (
     <header className="navigation_bar" role="banner">
       <div className="header_container">
         
-        {/* Logo a la izquierda del todo */}
         <Link 
           to="/" 
           className="logo_and_title heading_h5"
@@ -30,9 +20,8 @@ export default function Header({ onNavigate }) {
           GameZone
         </Link>
 
-        {/* Navegación a la derecha del todo */}
         <nav role="navigation">
-          <ul className="navigation_links">
+          <ul className="navigation_links flex items-center"> {/* Añadido flex e items-center para alinear el botón */}
             <li>
               <Link 
                 to="/" 
@@ -57,6 +46,17 @@ export default function Header({ onNavigate }) {
                 Admin
               </Link>
             </li>
+
+            {userLogged && (
+              <li>
+                <button
+                  onClick={logout}
+                  className="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

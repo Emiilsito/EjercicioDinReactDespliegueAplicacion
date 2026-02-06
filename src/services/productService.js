@@ -31,6 +31,23 @@ export const productService = {
         }
     },
 
+    async remove(id) {
+        try {
+            const response = await fetch(`${API_URL}/${id}`, {
+                method: "DELETE",
+            });
+
+            if (!response.ok) {
+                throw new Error("Error al eliminar el producto");
+            }
+
+            return true; 
+        } catch (error) {
+            console.error("Error en productService.remove:", error);
+            throw error;
+        }
+    },
+
     async create(nuevoProducto) {
         try {
             const response = await fetch(API_URL, {

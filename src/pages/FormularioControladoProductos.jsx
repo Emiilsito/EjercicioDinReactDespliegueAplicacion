@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
-import { productService } from "../services/productService";
+import { useActions } from "../hooks/useActions";
 
 export default function FormularioControladoProductos() {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ export default function FormularioControladoProductos() {
 
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const { create, loading, error } = useActions()  
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -42,24 +43,12 @@ const handleSubmit = async (e) => {
   const newErrors = validateForm();
   if (Object.keys(newErrors).length > 0) return setErrors(newErrors);
 
-  try {
-    await productService.create({
-      nombre: formData.nombre,
-      descripcion: formData.descripcion,
-      precio: formData.precio,
-      categoria: formData.categoria,
-      imagen: formData.img
-    });
+  const ok = await create(formData)
 
-    setSuccessMessage("¡Producto agregado correctamente!");
-
-    setTimeout(() => {
-      navigate("/productos"); 
-    }, 1500);
-
-  } catch (err) {
-    setErrors({ server: "Error al guardar en la base de datos." });
+  if (ok){
+    alert("Producto creado con exito.")
   }
+
 };
   return (
     <Layout pageBg={'var(--color-grey-1)'}>

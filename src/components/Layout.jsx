@@ -26,6 +26,7 @@ export default function Layout({ children, pageBg }) {
   return (
     <div className="flex flex-col min-h-screen">
       {/* El Skip-link suele estar aquí o dentro del Header para accesibilidad */}
+      
       <Header />
       
       <main 

@@ -1,8 +1,8 @@
 import Layout from "../components/Layout";
 import ProductList from "../components/ProductList";
 import SearchBar from "../components/SearchBar";
-import { useProducts } from "../hooks/useProducts";
 import { useState, useMemo } from "react";
+import { useProducts } from "../hooks/useProducts";
 
 export default function ProductosPage() {
   const [searchTerm, setSearchTerm] = useState("");

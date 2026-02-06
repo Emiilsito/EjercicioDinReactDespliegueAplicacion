@@ -3,7 +3,7 @@ import { productService } from "../services/productService";
 
 export function useProducts() {
   const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const loadProductos = async () => {

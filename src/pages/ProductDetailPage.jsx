@@ -1,34 +1,13 @@
 import { useParams, Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
-import { productService } from "../services/productService";
+import { useProductDetail } from "../hooks/useProductDetail";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
   const { state } = useLocation();
-  
-  const [producto, setProducto] = useState(state?.producto || null);
-  const [loading, setLoading] = useState(!state?.producto);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (producto) return;
-
-    const fetchProducto = async () => {
-      try {
-        setLoading(true);
-        const data = await productService.getOne(id);
-        setProducto(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducto();
-  }, [id, producto]);
-
+  const { producto, loading, error } = useProductDetail(id)
   if (loading) return <Layout><p className="text-center p-20">Cargando...</p></Layout>;
   
   if (error || !producto) {
@@ -48,7 +27,7 @@ export default function ProductDetailPage() {
         aria-labelledby={`product-title-${producto.id}`} 
         className="w-full max-w-6xl mx-auto"
       >
-        <article className="background_color_white rounded-lg shadow-[var(--dropshadow)] p-8 md:p-16">
+        <article className="background_color_white rounded-lg shadow-(--dropshadow) p-8 md:p-16">
           
           <div className="mb-12">
             <Link to="/productos" className="cta_button" aria-label="Volver">
@@ -58,7 +37,7 @@ export default function ProductDetailPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="flex items-center justify-center">
-              <div className="w-full rounded-lg p-6 border-2 border-[var(--color-grey-5)] bg-white flex items-center justify-center">
+              <div className="w-full rounded-lg p-6 border-2 border-(--color-grey-5) bg-white flex items-center justify-center">
                 <img 
                   src={producto.imagen} 
                   alt={producto.nombre} 
