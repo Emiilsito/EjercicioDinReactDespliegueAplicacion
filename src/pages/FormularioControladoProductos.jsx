@@ -10,7 +10,7 @@ export default function FormularioControladoProductos() {
     descripcion: "",
     precio: "",
     categoria: "",
-    img: "",
+    imagen: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -31,8 +31,8 @@ export default function FormularioControladoProductos() {
     if (!formData.precio || isNaN(formData.precio) || formData.precio <= 0)
       newErrors.precio = "El precio debe ser un número mayor que 0.";
     if (!formData.categoria.trim()) newErrors.categoria = "La categoría es obligatoria.";
-    if (!formData.img.trim() || !isValidUrl(formData.img))
-      newErrors.img = "La URL de la imagen no es válida.";
+    if (!formData.imagen.trim() || !isValidUrl(formData.imagen))
+      newErrors.imagen = "La URL de la imagen no es válida.";
     return newErrors;
   };
 
@@ -48,6 +48,7 @@ const handleSubmit = async (e) => {
   if (ok){
     alert("Producto creado con exito.")
   }
+  navigate("/productos")
 
 };
   return (
@@ -129,16 +130,16 @@ const handleSubmit = async (e) => {
           </div>
 
           <div className="form_group">
-            <label htmlFor="img" className="form_label">URL de la Imagen *</label>
+            <label htmlFor="imagen" className="form_label">URL de la Imagen *</label>
             <input
               type="url"
-              id="img"
-              value={formData.img}
+              id="imagen"
+              value={formData.imagen}
               onChange={handleChange}
-              className={`form_input ${errors.img ? 'form_input_error_state' : 'form_input_base'}`}
-              aria-invalid={!!errors.img}
+              className={`form_input ${errors.imagen ? 'form_input_error_state' : 'form_input_base'}`}
+              aria-invalid={!!errors.imagen}
             />
-            {errors.img && <span className="error_message">{errors.img}</span>}
+            {errors.imagen && <span className="error_message">{errors.imagen}</span>}
           </div>
 
           <button type="submit" className="form_button">
