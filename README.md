@@ -5,7 +5,7 @@ Este proyecto consiste en una aplicación completa para la gestión y visualizac
 
 ---
 
-## 🚀 Despliegue e Infraestructura
+## Despliegue e Infraestructura
 
 La arquitectura del proyecto se divide en tres servicios independientes para garantizar su escalabilidad y correcto funcionamiento en producción:
 
@@ -15,7 +15,7 @@ La arquitectura del proyecto se divide en tres servicios independientes para gar
 
 ---
 
-## ♿ Accesibilidad y Usabilidad
+## Accesibilidad y Usabilidad
 
 Cuento con las siguientes características de accesibilidad y usabilidad implementadas:
 
@@ -35,7 +35,7 @@ Cuento con las siguientes características de accesibilidad y usabilidad impleme
 
 ---
 
-## 🛠️ Reflexión Técnica
+## Reflexión Técnica
 
 ### Desafíos encontrados durante el despliegue
 * **CORS:** Al separar el frontend y la API en distintos servicios cloud, configuré los permisos de acceso en el backend para permitir peticiones desde el dominio de Vercel.
@@ -48,7 +48,7 @@ Cuento con las siguientes características de accesibilidad y usabilidad impleme
 
 ---
 
-## ⚙️ Scripts Principales
+## Scripts Principales
 
 * `npm run dev`: Levanta el entorno de desarrollo web.
 * `npm run electron-dev`: Ejecuta Electron cargando el servidor local de Vite.
